@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Request</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    
+
+</head>
+<body class="gib">
+    <div >
+        <h1 class="vi">Gas Utility Company</h1>
+    <!-- <h1>Submit Request</h1> -->
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <h1 style="background-color: rgb(222, 225, 61);">Submit Request</h1>
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type"><br><br>
+        <label for="details">Details:</label><br>
+        <textarea id="details" name="details"></textarea><br><br>
+        <label for="attachment">Attachment:</label>
+        <input type="file" id="attachment" name="attachment"><br><br>
+        <button type="submit">Submit</button>
+
+
+        <a href="/" class="btn btn-primary border-inner  anchor">Track Request</a>
+        <a href="/manage" class="btn btn-primary border-inner  anchor">Manage Request</a>
+
+    
+
+
+    </form>
+</div>
+</body>
+</html>
