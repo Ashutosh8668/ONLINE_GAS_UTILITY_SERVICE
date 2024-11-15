@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resolve Request</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body class="gib">
+    <h1 class="vi">Gas Utility Company</h1>
+    <div class="container">
+        <h1 style="background-color: rgb(222, 225, 61);">Resolve Request</h1>
+        
+        <table class="request-details">
+            <tr>
+                <th>Type</th>
+                <td>{{ service_request.type }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ service_request.details }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ service_request.status }}</td>
+            </tr>
+            <tr>
+                <th>Submitted At</th>
+                <td>{{ service_request.created_at }}</td>
+            </tr>
+        </table>
+        
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Resolve Request" class="button">
+        </form>
+    </div>
+</body>
+</html>

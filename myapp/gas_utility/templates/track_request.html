@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Request</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body class="gib">
+    <h1 class="vi">Gas Utility Company</h1>
+    <form>
+    <h1 style="background-color: rgb(222, 225, 61);">Track Request</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Details</th>
+                <th>Status</th>
+                <th>Submitted At</th>
+                <th>Resolved At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in service_requests %}
+            <tr>
+                <td>{{ request.type }}</td>
+                <td>{{ request.details }}</td>
+                <td>{{ request.status }}</td>
+                <td>{{ request.created_at }}</td>
+                <td>{{ request.resolved_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/submit" class="btn btn-primary border-inner  anchor">Add Another Request</a>
+        <a href="/manage" class="btn btn-primary border-inner  anchor">Manage Request</a>
+    </form>
+</body>
+</html>

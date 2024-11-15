@@ -1,0 +1,67 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Requests</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body class="gib">
+    <h1 class="vi">Gas Utility Company</h1>
+    <div class="container">
+        
+        <h1 style="background-color: rgb(222, 225, 61);">Manage Requests</h1>
+        
+        <h2>Pending Requests</h2>
+        <table class="request-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Submitted At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in pending_requests %}
+                <tr>
+                    <td>{{ request.type }}</td>
+                    <td>{{ request.details }}</td>
+                    <td>{{ request.status }}</td>
+                    <td>{{ request.created_at }}</td>
+                    <td><a href="{% url 'resolve_request' request.id %}" class="button">Resolve</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <h2>Completed Requests</h2>
+        <table class="request-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Submitted At</th>
+                    <th>Resolved At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in completed_requests %}
+                <tr>
+                    <td>{{ request.type }}</td>
+                    <td>{{ request.details }}</td>
+                    <td>{{ request.status }}</td>
+                    <td>{{ request.created_at }}</td>
+                    <td>{{ request.resolved_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-primary border-inner  anchor">Track Request</a>
+        <a href="/submit" class="btn btn-primary border-inner  anchor">Add More Request</a>
+    </div>
+</body>
+</html>
